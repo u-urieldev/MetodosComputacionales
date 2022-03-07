@@ -31,6 +31,23 @@ c, que se reciben como entrada. |#
 
 (roots 2 4 2)
 
+#|4 La funcion bmi recibe dos entrada: weight y height. Debe devolver un simbolo que represente la descripcion
+del BMI correspondiente calculado a partir de sus entradas.|#
+"Ejercicio 6"
+(define (bmi_aux bmi_index)
+  (cond [(< bmi_index 20) "underweight"] 
+        [(and (>= bmi_index 20) (< bmi_index 25)) "normal"] 
+        [(and (>= bmi_index 25) (< bmi_index 30)) "obese1"] 
+        [(and (>= bmi_index 30) (< bmi_index 40)) "obese2"] 
+        [else "obese3"]
+  )
+)
+
+(define (bmi weight height)
+  (bmi_aux (/ weight (expt height 2)))
+)
+(bmi 120 1.6)
+
 #|5 La funcion factorial toma un entero positivo n como su entrada y devuelve el factorial
 correspondiente, que matematicamente se define asi:|#
 "Ejercicio 5"
@@ -48,6 +65,13 @@ de calcular a elevado a la potencia b.|#
   (expt a b))
 
 (pow 5 0)
+
+#|8 La funcion fib toma un entero positivo n como entrada y devuelve el elemento 
+correspondiente de la secuencia de Fibonacci, que se define matematicamente como:
+|#
+(define (fib n)
+  (if (<= n 1) 1 (+ (fib (- n 1)) (fib (- n 2))) ))
+(fib 8)
 
 #|9La funcion enlist coloca dento de una lista a cada elemento de nivel superior de la lista que recibe como
 entrada..|#
@@ -81,7 +105,7 @@ esta vacıa..|#
 
 (define (list-of-symbols)
   
-  )
+)
 
 
 
