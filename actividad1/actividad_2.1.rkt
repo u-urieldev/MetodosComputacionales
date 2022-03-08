@@ -1,6 +1,5 @@
 #lang racket
 
-
 #|Función 11 adaptada de: https://stackoverflow.com/questions/41512010/sum-items-in-list-racket|#
 
 #|1 La funcion fahrenheit-to-celsius toma como entrada una temperatura f en grados Fahrenheit
@@ -9,7 +8,6 @@ y la convierte a su equivalente en grados Celsius usando la siguiente formula: C
 (define (fahrenheit-to-celsius gradosFahrenheit)
     (/ (* 5 (- gradosFahrenheit 32)) 9.0))
 (fahrenheit-to-celsius 32)
-
 
 
 #|2 La funcion sign recibe como entrada un valor entero n. Devuelve -1 si n es negativo,
@@ -31,6 +29,7 @@ c, que se reciben como entrada. |#
 
 (roots 2 4 2)
 
+
 #|4 La funcion bmi recibe dos entrada: weight y height. Debe devolver un simbolo que represente la descripcion
 del BMI correspondiente calculado a partir de sus entradas.|#
 "Ejercicio 6"
@@ -47,6 +46,7 @@ del BMI correspondiente calculado a partir de sus entradas.|#
   (bmi_aux (/ weight (expt height 2)))
 )
 (bmi 120 1.6)
+
 
 #|5 La funcion factorial toma un entero positivo n como su entrada y devuelve el factorial
 correspondiente, que matematicamente se define asi:|#
@@ -66,12 +66,14 @@ de calcular a elevado a la potencia b.|#
 
 (pow 5 0)
 
+
 #|8 La funcion fib toma un entero positivo n como entrada y devuelve el elemento 
 correspondiente de la secuencia de Fibonacci, que se define matematicamente como:
 |#
 (define (fib n)
   (if (<= n 1) 1 (+ (fib (- n 1)) (fib (- n 2))) ))
 (fib 8)
+
 
 #|9La funcion enlist coloca dento de una lista a cada elemento de nivel superior de la lista que recibe como
 entrada..|#
@@ -90,7 +92,7 @@ entrada..|#
 (enlist '((1 2 3) 4 (5) 7 8))
 
 #|11 La funcion add-list devuelve la suma de los numeros contenidos en la lista que recibe como entrada, o 0 si
-esta vacıa..|#
+esta vacia|#
 "Ejercicio 11"
 (define (add-list lista)
   (apply + lista))
@@ -103,9 +105,21 @@ esta vacıa..|#
 (posiblemente cero) contenidos en lst son sımbolos, o falso en caso contrario.|#
 "Ejercicio 11"
 
-(define (list-of-symbols)
-  
+
+#| 20 La funcion binary recibe un entero n como entrada (n ≥ 0). Si n es igual a cero, devuelve una lista vacia.
+Si n es mayor que cero, devuelve una lista con una secuencia de unos y ceros equivalente a la representacion
+binaria de n.
+|#
+
+(define (bin_aux n lst)
+  (cond [(zero? n ) (reverse lst)]
+        [(bin_aux (quotient n 2) (append lst (list (remainder n 2))))]
+  )
+)
+
+(define (binary n)
+  (bin_aux n '())
 )
 
 
-
+(binary 45123)
