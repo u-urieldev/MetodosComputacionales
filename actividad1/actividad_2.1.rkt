@@ -7,7 +7,8 @@ y la convierte a su equivalente en grados Celsius usando la siguiente formula: C
 "Ejercicio 1"
 (define (fahrenheit-to-celsius gradosFahrenheit)
     (/ (* 5 (- gradosFahrenheit 32)) 9.0))
-(fahrenheit-to-celsius 32)
+
+;;; (fahrenheit-to-celsius 32)
 
 
 #|2 La funcion sign recibe como entrada un valor entero n. Devuelve -1 si n es negativo,
@@ -17,7 +18,7 @@ y la convierte a su equivalente en grados Celsius usando la siguiente formula: C
 (define (sign numero)
     (if (positive? numero) 1 (if(negative? numero)-1 0)))
 
-(sign 0)
+;;; (sign 0)
 
 
 #|3 La funcion roots devuelve la raiz que resuelve una ecuacion cuadratica a partir de sus tres coeficiente, a, b y
@@ -27,7 +28,7 @@ c, que se reciben como entrada. |#
 (define (roots a b c)
     (/ (+(* -1.0 b) (sqrt(- (expt b 2) (* 4.0 a c)))) (* 2.0 a)))
 
-(roots 2 4 2)
+;;; (roots 2 4 2)
 
 
 #|4 La funcion bmi recibe dos entrada: weight y height. Debe devolver un simbolo que represente la descripcion
@@ -45,7 +46,8 @@ del BMI correspondiente calculado a partir de sus entradas.|#
 (define (bmi weight height)
   (bmi_aux (/ weight (expt height 2)))
 )
-(bmi 120 1.6)
+
+;;; (bmi 120 1.6)
 
 
 #|5 La funcion factorial toma un entero positivo n como su entrada y devuelve el factorial
@@ -54,7 +56,7 @@ correspondiente, que matematicamente se define asi:|#
 (define (factorial n)
     (if(equal? n 0)1 (* n (factorial (- n 1)))))
 
-(factorial 40)
+;;; (factorial 40)
 
 
 #|7 La funcion pow toma dos entradas como entrada: un numero a y un entero positivo b. Devuelve el resultado
@@ -64,7 +66,7 @@ de calcular a elevado a la potencia b.|#
 (define (pow a b)
   (expt a b))
 
-(pow 5 0)
+;;; (pow 5 0)
 
 
 #|8 La funcion fib toma un entero positivo n como entrada y devuelve el elemento 
@@ -72,7 +74,8 @@ correspondiente de la secuencia de Fibonacci, que se define matematicamente como
 |#
 (define (fib n)
   (if (<= n 1) 1 (+ (fib (- n 1)) (fib (- n 2))) ))
-(fib 8)
+
+;;; (fib 8)
 
 
 #|9La funcion enlist coloca dento de una lista a cada elemento de nivel superior de la lista que recibe como
@@ -87,9 +90,10 @@ entrada..|#
      (map list b ))
 
 
-(enlist '())
-(enlist '(a b c))
-(enlist '((1 2 3) 4 (5) 7 8))
+;;; (enlist '())
+;;; (enlist '(a b c))
+;;; (enlist '((1 2 3) 4 (5) 7 8))
+
 
 #|11 La funcion add-list devuelve la suma de los numeros contenidos en la lista que recibe como entrada, o 0 si
 esta vacia|#
@@ -97,19 +101,74 @@ esta vacia|#
 (define (add-list lista)
   (apply + lista))
 
-(add-list '())
-(add-list '(2 4 1 3))
-(add-list '(1 2 3 4 5 6 7 8 9 10))
+;;; (add-list '())
+;;; (add-list '(2 4 1 3))
+;;; (add-list '(1 2 3 4 5 6 7 8 9 10))
+
 
 #|13 La funcion de list-of-symbols? toma una lista lst como entrada. Devuelve verdadero si todos los elementos
 (posiblemente cero) contenidos en lst son sımbolos, o falso en caso contrario.|#
 "Ejercicio 11"
 
+(define (list-of-symbols lista)
+  (if (empty? lista) #true
+      (if (symbol?(first lista))
+          (list-of-symbols (rest lista))
+          #false) ))
 
-#| 20 La funcion binary recibe un entero n como entrada (n ≥ 0). Si n es igual a cero, devuelve una lista vacia.
+;;; (list-of-symbols '())
+;;; (list-of-symbols '(a b c d e))
+;;; (list-of-symbols '(a b c d 42 e))
+
+
+#|15  La funciion dot-product toma dos entradas: las listas a y b. Devuelve el resultado de realizar el producto
+punto de a por b. El producto punto es una operacion algebraica que toma dos secuencias de numeros de
+igual longitud y devuelve un solo numero que se obtiene multiplicando los elementos en la misma posicion y
+luego sumando esos productos. Su formula es |#
+"Exercise 15: Dot-Product"
+
+(define (dot-product lista1 lista2)
+  (let loop
+    ([lista1 lista1] [lista2 lista2] [result 0])
+    (if (empty? lista1)
+        result
+        (loop (rest lista1)(rest lista2)(+ result (* (first lista1) (first lista2)))))))
+
+
+(dot-product '() '())
+(dot-product '(1 2 3) '(4 5 6))
+(dot-product '(1.3 3.4 5.7 9.5 10.4) '(-4.5 3.0 1.5 0.9 0.0))
+
+#|17 La funcion standard-deviation recibe una lista de numeros lst como entrada. Devuelve la desviacion
+estandar de la poblacion de los elementos contenidos en lst, o 0 si lst esta vacia. La desviacion estandar de
+la poblacion () se define como:|#
+"Exercise 17: Standar Deviation"
+
+;mean
+(define (mean lst)
+  (let loop
+    ([lista lst][n (length lst)][sum 0])
+     (if (empty? lista) (if (eq? sum 0) 0 (/ sum n))
+       (loop (rest lista) (+ n 0) (+ (first lista) sum) ))))
+
+(define (standard-deviation lst)
+  (let loop
+    ([lista lst][mean (mean lst)][result 0])
+    (if (empty? lista) (if (eq? result 0)0 (sqrt (/ result (length lst))))
+        (loop (rest lista)(+ mean 0)(+ result (expt (- (first lista) mean) 2))))))
+
+
+(standard-deviation '())
+(standard-deviation '(4 8 15 16 23 42))
+(standard-deviation '(110 105 90 100 95))
+(standard-deviation '(9 2 5 4 12 7 8 11 9 3 7 4 12 5 4 10 9 6 9 4))
+
+
+#|20 La funcion binary recibe un entero n como entrada (n ≥ 0). Si n es igual a cero, devuelve una lista vacia.
 Si n es mayor que cero, devuelve una lista con una secuencia de unos y ceros equivalente a la representacion
 binaria de n.
 |#
+"Exercise 17: Binary to decimal"
 
 (define (bin_aux n lst)
   (cond [(zero? n ) (reverse lst)]
@@ -121,5 +180,6 @@ binaria de n.
   (bin_aux n '())
 )
 
-
+(binary 0)
+(binary 30)
 (binary 45123)
