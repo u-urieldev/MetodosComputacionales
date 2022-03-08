@@ -1,6 +1,16 @@
+#|
+  Alvaro Garcia A01781511
+  Uriel Aguilar A01781698
+
+  Actividad 2: Programacion Funcional
+|#
+
 #lang racket
 
 #|Función 11 adaptada de: https://stackoverflow.com/questions/41512010/sum-items-in-list-racket|#
+
+
+"Tests of exercices 1 to 11 deactivated"
 
 #|1 La funcion fahrenheit-to-celsius toma como entrada una temperatura f en grados Fahrenheit
 y la convierte a su equivalente en grados Celsius usando la siguiente formula: C = 5(F-32)/9 |#
@@ -125,7 +135,7 @@ esta vacia|#
 punto de a por b. El producto punto es una operacion algebraica que toma dos secuencias de numeros de
 igual longitud y devuelve un solo numero que se obtiene multiplicando los elementos en la misma posicion y
 luego sumando esos productos. Su formula es |#
-"Exercise 15: Dot-Product"
+"Exercise 15 dot product"
 
 (define (dot-product lista1 lista2)
   (let loop
@@ -138,6 +148,19 @@ luego sumando esos productos. Su formula es |#
 (dot-product '() '())
 (dot-product '(1 2 3) '(4 5 6))
 (dot-product '(1.3 3.4 5.7 9.5 10.4) '(-4.5 3.0 1.5 0.9 0.0))
+
+#|16  La funcion average recibe una lista de numeros lst como entrada. Devuelve la media aritmetica de los
+elementos contenidos en lst, o 0 si lst esta vaca. La media aritmetica (_x) se define como: |#
+"Exercise 16: Average"
+
+(define (average lst)
+  ;We use the funcion previosly define in exercice 11
+  (/ (add-list lst) (length lst))
+)
+
+(average '(1 2 3))
+(average '(1 1 1))
+(average '(4 2 9))
 
 #|17 La funcion standard-deviation recibe una lista de numeros lst como entrada. Devuelve la desviacion
 estandar de la poblacion de los elementos contenidos en lst, o 0 si lst esta vacia. La desviacion estandar de
@@ -168,7 +191,7 @@ la poblacion () se define como:|#
 Si n es mayor que cero, devuelve una lista con una secuencia de unos y ceros equivalente a la representacion
 binaria de n.
 |#
-"Exercise 17: Binary to decimal"
+"Exercise 20: Binary to decimal"
 
 (define (bin_aux n lst)
   (cond [(zero? n ) (reverse lst)]
