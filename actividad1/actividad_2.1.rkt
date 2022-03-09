@@ -108,7 +108,7 @@ input..|#
 
 #|11 The add-list function returns the sum of the numbers contained in the list it receives as input, or 0 if it is empty.
 is empty|#
-"Ejercicio 11"
+"Exercise 11"
 (define (add-list lista)
   (apply + lista))
 
