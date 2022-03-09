@@ -2,7 +2,6 @@
   Alvaro Garcia A01781511
   Uriel Aguilar A01781698
 
-  09/March/2022
   Activity 2: Functional Programming
 |#
 
@@ -13,8 +12,8 @@
 
 "Tests of exercices 1 to 11 deactivated"
 
-#|1 The fahrenheit-to-celsius function takes as an input a temperature f in degrees Fahrenheit
-and converts it to its equivalent in degrees Celsius using the following formula: C = 5(F-32)/9 |#
+#|1 La funcion fahrenheit-to-celsius toma como entrada una temperatura f en grados Fahrenheit
+y la convierte a su equivalente en grados Celsius usando la siguiente formula: C = 5(F-32)/9 |#
 "Ejercicio 1"
 (define (fahrenheit-to-celsius FahrenheitDegrees)
     (/ (* 5 (- FahrenheitDegrees 32)) 9.0))
