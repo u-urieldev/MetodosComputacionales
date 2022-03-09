@@ -119,7 +119,7 @@ is empty|#
 
 #|13 The list-of-symbols? function takes a list lst as input. It returns true if all elements (possibly zero) contained in lst are symbols, or false otherwise.
 (possibly zero) contained in lst are symbols, otherwise false.|#
-"Ejercicio 11"
+"Exercise 13"
 
 (define (list-of-symbols lista)
   (if (empty? lista) #true
