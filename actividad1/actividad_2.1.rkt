@@ -156,6 +156,7 @@ then adding those products together. Its formula is
 elements contained in lst, or 0 if lst is empty. The arithmetic mean (_x) is defined as: |#
 "Exercise 16: Average"
 
+"We also implemented the function mean for exercise 17 (standar-deviation), which is also the average, but that function is made with let"
 (define (average lst)
   ;We use the funcion previosly define in exercice 11
   (/ (add-list lst) (length lst))
