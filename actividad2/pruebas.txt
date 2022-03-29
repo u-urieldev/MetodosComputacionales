@@ -1,0 +1,21 @@
+NoComentario
+
+/ / no 
+
+// Comentario
+
+no Comentario // Comentario
+
+Variable
+variable
+
+var_var
+
+var3-x
+
+
+1223
+
+12.
+
+1.23
