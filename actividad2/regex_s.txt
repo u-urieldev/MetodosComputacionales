@@ -1,1 +1,7 @@
 Intentos con regex:
+
+Comments: //.*$
+
+Variables: [a-zA-Z][\w_]+
+
+Floats: \d+\.\d*
