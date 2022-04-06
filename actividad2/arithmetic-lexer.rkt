@@ -50,7 +50,7 @@ Part of this code Gilberto Echeverria.
       )]
       
       ['par_closed (cond
-        [(eq? character #\() (values #f 'par_closed)]
+        ;;; [(eq? character #\() (values #f 'par_closed)]
         [(eq? character #\)) (values 'par_open 'par_closed)]
         [(operator? character) (values 'par_closed 'op)]
         [(char-whitespace? character) (values 'par_closed 'empty)]
