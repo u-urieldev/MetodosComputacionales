@@ -1,0 +1,19 @@
+Regex Patterns for JSON
+
+Keys: 
+"(\w+)\s*":
+
+Puntuation:
+\{|\}|:|,
+
+Strings:
+"(\s*[^"])*"
+
+Numbers:
+-?\d+\.?\d*([eE]?[-\+]?\d+)?
+
+Null:
+null
+
+Boolean:
+true|false

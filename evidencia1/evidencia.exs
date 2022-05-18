@@ -7,15 +7,16 @@ defmodule Evidencia do
     Read a file
     """
     def space_to_dash(in_filename, out_filename) do
-    # Using pipe operator to link the calls
+
+    #Using pipe operator to link the calls
     text =
       in_filename
-      |> File.stream!()
-      |> Enum.map(&String.split/1)
+      |> File.stream!()                       # Lista de strings por linea
+      |> Enum.map( &String.split/1 )                          
+      |> IO.inspect()
+      #|> Enum.map(&(Enum.join(&1, "-")))
       #|> IO.inspect()
-      |> Enum.map(&(Enum.join(&1, "-")))
-      #|> IO.inspect()
-      |> Enum.join("\n")
+      #|> Enum.join("\n")
     File.write(out_filename, text)
   end
 
