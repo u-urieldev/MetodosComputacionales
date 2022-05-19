@@ -8,8 +8,8 @@ defmodule Evidencia do
     """
     def space_to_dash(in_filename, out_filename) do
       temp1 = File.read!(in_filename)
-      temp2 = Regex.replace(~r/(\w+)/,temp1, "<span class = \"clase\">  \\g{1}  <span>")
-      File.write(out_filename, temp2)
+      keys = Regex.replace(~r/"(\s*[^" [])*"(?=\s*:)|(?!)/,temp1, "<span class='object-key'>\\g{0}</span>")
+      File.write(out_filename, keys)
       
       # temp2 = Regex.replace(~r/\d+/,temp1, "span\\Poison.decode(temp1))
     end

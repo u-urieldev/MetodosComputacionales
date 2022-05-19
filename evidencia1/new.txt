@@ -1,23 +1,23 @@
 [
   {
-    "<span class = "clase">  movie  <span>": "<span class = "clase">  King  <span> <span class = "clase">  Kong  <span>",
-    "<span class = "clase">  year  <span>": <span class = "clase">  1933  <span>,
-    "<span class = "clase">  director  <span>": "<span class = "clase">  Merian  <span> <span class = "clase">  C  <span>. <span class = "clase">  Cooper  <span>",
-    "<span class = "clase">  oscarWinner  <span>": <span class = "clase">  null  <span>,
-    "<span class = "clase">  imdb  <span>": <span class = "clase">  790  <span>.<span class = "clase">  0E  <span>-<span class = "clase">  2  <span>
+    <span class='object-key'>"movie"</span>: "King Kong",
+    <span class='object-key'>"year"</span>: 1933,
+    <span class='object-key'>"director"</span>: "Merian C. Cooper",
+    <span class='object-key'>"oscarWinner"</span>: null,
+    <span class='object-key'>"imdb"</span>: 790.0E-2
   },
   {
-    "<span class = "clase">  movie  <span>"       : "<span class = "clase">  Jaws  <span>",
-    "<span class = "clase">  year  <span>"        : <span class = "clase">  1975  <span>,
-    "<span class = "clase">  director  <span>"    : "<span class = "clase">  Steven  <span> <span class = "clase">  Spielberg  <span>",
-    "<span class = "clase">  oscarWinner  <span>" : <span class = "clase">  true  <span>,
-    "<span class = "clase">  imdb  <span>"        : <span class = "clase">  0  <span>.<span class = "clase">  80E  <span>+<span class = "clase">  1  <span>
+    <span class='object-key'>"movie"</span>       : "Jaws",
+    <span class='object-key'>"year"</span>        : 1975,
+    <span class='object-key'>"director"</span>    : "Steven Spielberg",
+    <span class='object-key'>"oscarWinner"</span> : true,
+    <span class='object-key'>"imdb"</span>        : 0.80E+1
   },
   {
-    "<span class = "clase">  movie  <span>": "<span class = "clase">  Avengers  <span>: <span class = "clase">  Endgame  <span>",
-    "<span class = "clase">  year  <span>": <span class = "clase">  2019  <span>,
-    "<span class = "clase">  director  <span>": "<span class = "clase">  Russo  <span> <span class = "clase">  brothers  <span>",
-    "<span class = "clase">  oscarWinner  <span>": <span class = "clase">  false  <span>,
-    "<span class = "clase">  imdb  <span>": <span class = "clase">  8  <span>.<span class = "clase">  4E0  <span>
+    <span class='object-key'>"movie"</span>: "Avengers: Endgame",
+    <span class='object-key'>"year"</span>: 2019,
+    <span class='object-key'>"director"</span>: "Russo brothers",
+    <span class='object-key'>"oscarWinner"</span>: false,
+    <span class='object-key'>"imdb"</span>: 8.4E0
   }
 ]
