@@ -1,0 +1,1 @@
+Para probar el programa ejecutar elixir primos.exs en la terminal

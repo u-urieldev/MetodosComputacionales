@@ -45,8 +45,35 @@ defmodule Hw.Primes do
         |> Enum.sum()
         |> Kernel.+(actual_acc)
     end
-   
+    
+    
 end
 
-#Primes.sum_primes(5000000)
-#Primes.sum_primes_parall(5000000)
+defmodule Measure do
+    @doc """  
+    Time elixir function 
+    https://stackoverflow.com/questions/29668635/how-can-we-easily-time-function-calls-in-elixir
+    """
+    def timer(function) do
+            function
+            |> :timer.tc
+            |> elem(0)
+            |> Kernel./(1_000_000)
+    end
+end
+
+
+IO.puts "Sum Primes 10000"
+IO.puts Measure.timer(fn -> Hw.Primes.sum_primes(10000) end)
+IO.puts "Sum Primes Parallel 10000"
+IO.puts Measure.timer(fn -> Hw.Primes.sum_primes_parall(10000) end)
+
+IO.puts("")
+
+IO.puts "Sum Primes 5000000"
+IO.puts Measure.timer(fn -> Hw.Primes.sum_primes(5000000) end)
+IO.puts "Sum Primes Parallel 5000000"
+IO.puts Measure.timer(fn -> Hw.Primes.sum_primes_parall(5000000) end)
+
+
+
