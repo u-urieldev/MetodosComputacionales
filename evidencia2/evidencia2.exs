@@ -2,6 +2,10 @@
 # Uriel A01781698
 # Actividad Integradora 5.2: Parall Syntax Highlighter.
 
+#elixir evidencia2.exs to test the program
+
+
+
 defmodule Parce do
     @doc """
       Parce a JSON file given and create and 
@@ -36,51 +40,86 @@ defmodule Parce do
     defp createFile(out_file, body), do:
       File.write(out_file, 
         File.read!("sheme/header.html") <> body <> File.read!("sheme/footer.html"))
+end
 
-
-    @doc """
-      Parce multiple json files in secuencial.
-      Funcion recive a list with input files 
-      and their corresponding output file.  
-      Or a list of tuples in form of pairs {input_file, out_putfile}.
+defmodule Measure do
+    @doc """  
+    Time elixir function 
+    https://stackoverflow.com/questions/29668635/how-can-we-easily-time-function-calls-in-elixir
     """
-    def multi_json(files), do: 
-      Enum.map(files, fn par -> json(elem(par,0), elem(par,1)) end )
+    def timer(function) do
+            function
+            |> :timer.tc
+            |> elem(0)
+            |> Kernel./(1_000_000)
+    end
+end
 
-    def multi_json(infiles, outfiles), do:
-      List.zip([infiles, outfiles])
-      |> Enum.map(fn par -> json(elem(par,0), elem(par,1)) end )
+
+defmodule Main do
 
 
-    @doc """
-      Parce multiple json files in parall.
-      Funcion recive a list with input files 
-      and their corresponding output file.  
-      Or a list of tuples in form of pairs {input_file, out_putfile}.
-    """
-    def multi_json_parall(infiles, outfiles) do
-      List.zip([infiles, outfiles])
-      |> Enum.map(&Task.start(fn -> json(elem(&1, 0), elem(&1, 1)) end ))
+@doc """  
+      Parce multiple files concurrently
+      """
+  def multi_json_parall do
+      
+      tasks = [
+    Task.async(fn -> Parce.json("Test_files2/1.json", "Out_files/new1.html") end),
+    Task.async(fn -> Parce.json("Test_files2/2.json", "Out_files/new2.html") end),
+    Task.async(fn -> Parce.json("Test_files2/3.json", "Out_files/new3.html") end),
+    Task.async(fn -> Parce.json("Test_files2/4.json", "Out_files/new4.html") end),
+    Task.async(fn -> Parce.json("Test_files2/5.json", "Out_files/new5.html") end),
+    Task.async(fn -> Parce.json("Test_files2/6.json", "Out_files/new6.html") end),
+    Task.async(fn -> Parce.json("Test_files2/7.json", "Out_files/new7.html") end),
+    Task.async(fn -> Parce.json("Test_files2/8.json", "Out_files/new8.html") end),
+    Task.async(fn -> Parce.json("Test_files2/9.json", "Out_files/new9.html") end),
+    Task.async(fn -> Parce.json("Test_files2/10.json", "Out_files/new10.html") end),
+    Task.async(fn -> Parce.json("Test_files2/11.json", "Out_files/new11.html") end)
+    ]
+
+    Task.await_many(tasks, :infinity)
+      
     end
 
-    def multi_json_parall(files) do
-      files
-      |> Enum.map(&Task.start(fn -> json(elem(&1, 0), elem(&1, 1)) end ))
-    end
+@doc """  
+      Parce multiple files sequentially
+      """
+def multi_json do
+    
+  Parce.json("Test_files2/1.json", "Out_files/new1.html")
+  Parce.json("Test_files2/2.json", "Out_files/new2.html")
+  Parce.json("Test_files2/3.json", "Out_files/new3.html")
+  Parce.json("Test_files2/4.json", "Out_files/new4.html")
+  Parce.json("Test_files2/5.json", "Out_files/new5.html")
+  Parce.json("Test_files2/6.json", "Out_files/new6.html")
+  Parce.json("Test_files2/7.json", "Out_files/new7.html")
+  Parce.json("Test_files2/8.json", "Out_files/new8.html")
+  Parce.json("Test_files2/9.json", "Out_files/new9.html")
+  Parce.json("Test_files2/10.json", "Out_files/new10.html")
+  Parce.json("Test_files2/11.json", "Out_files/new11.html")
+ 
+
+    
+  end
+
 
 end
 
 
-#Parce.json("Test_files/example_1.json", "new.html")
 
-# infile = ["Test_files/example_0.json", "Test_files/example_1.json", "Test_files/example_2.json"]
-# outfile = ["Out_files/new0.html", "Out_files/new1.html","Out_files/new2.html"]
-# files = [{"Test_files/example_0.json", "Out_files/new0.html"},
-#          {"Test_files/example_1.json", "Out_files/new1.html"},
-#          {"Test_files/example_2.json", "Out_files/new2.html"}]
+#Measure sequential time
+IO.puts "Multi_json"
+IO.puts Measure.timer(fn -> Main.multi_json() end)
 
-# Parce.multi_json(infile, outfile)
-# Parce.multi_json(files)
+IO.puts("")
 
-#Parce.multi_json_parall(infile, outfile)
-#Parce.multi_json_parall(files)
+#Measure parallel time
+IO.puts "Multi_json_parall"
+IO.puts Measure.timer(fn -> Main.multi_json_parall() end)
+exit(:shutdown)
+
+
+
+
+
